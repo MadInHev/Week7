@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Restricted Video</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        // Get the content div
+        const contentDiv = document.getElementById("content");
+
+        // Function to handle age verification
+        function verifyAge() {
+            // Prompt user for age
+            const age = prompt("Please enter your age:");
+
+            // Check age
+            if (!age || isNaN(age)) {
+                alert("Please enter a valid number for your age.");
+                verifyAge(); // Re-prompt if the input is invalid
+            } else if (age < 16) {
+                contentDiv.innerHTML = "<h2>Sorry, you cannot view the video because you are under 16.</h2>";
+            } else {
+                contentDiv.innerHTML = `
+                    <h2>Alright! You can view the video below :3 </h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/flNQSc1iWkc?si=5dnGaVO0q8pgCk5H" 
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                `;
+            }
+        }
+
+        // Call the function on page load
+        verifyAge();
+    </script>
+</body>
+</html>
